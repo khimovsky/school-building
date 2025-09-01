@@ -6,6 +6,7 @@ import {ResponsiveDirective} from "../../../directives/responsive.directive";
 import {takeUntilDestroyed} from "@angular/core/rxjs-interop";
 import {ToastService} from "../toast/toast.service";
 import {PaymentService} from "../../../services/payment/payment.service";
+import {PaymentDTO} from "../../../services/payment/payment.model";
 
 @Component({
   selector: 'app-components-payment',
@@ -42,13 +43,19 @@ export class ComponentsPaymentComponent {
       this.toastService.show('Ожидайте перенаправление на платежный сервис')
       this.paymentService.pay({
         amount: this.amountToPay,
-        description: 'Donate_schoolBuilding',
         prefix: 'schoolBuilding',
         return_url: String(window.location.href),
       })
         .pipe(takeUntilDestroyed(this.destroyRef))
         .subscribe({
-          next: (): void => this.toastService.show(`Платеж создан, ожидайте`),
+          next: (response: PaymentDTO): void => {
+            const url: string = response.confirmation?.confirmation_url;
+            if (url) {
+              window.location.href = url;
+            } else {
+              this.toastService.show(`Не удалось получить ссылку для оплаты`);
+            }
+          },
           error: (): void => this.toastService.show(`Не удалось создать платеж`)
         });
     } else {
