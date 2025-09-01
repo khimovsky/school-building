@@ -1,0 +1,51 @@
+@use 'variables' as *;
+
+input {
+  width: 100%;
+  background: transparent;
+  color: #fff;
+  font-weight: 500;
+  font-size: 96px;
+  line-height: 102px;
+  letter-spacing: 0;
+  text-align: center;
+  transition: all 180ms ease-out;
+
+  @media (max-width: $container-max-width) {
+    font-size: 70px;
+    line-height: 76px;
+  }
+
+  &::placeholder {
+    color: #ffffff33;
+    transition: color 180ms ease-out;
+  }
+  &::-moz-placeholder {
+    color: #ffffff33;
+    transition: color 180ms ease-out;
+  }
+  &:-ms-input-placeholder {
+    color: #ffffff33;
+    transition: color 180ms ease-out;
+  }
+  &::-ms-input-placeholder {
+    color: #ffffff33;
+    transition: color 180ms ease-out;
+  }
+
+  &:focus {
+    &::placeholder {
+      color: #ffffff1a;
+    }
+    &::-moz-placeholder {
+      color: #ffffff1a;
+    }
+    &:-ms-input-placeholder {
+      color: #ffffff1a;
+    }
+    &::-ms-input-placeholder {
+      color: #ffffff1a;
+    }
+  }
+}
+

@@ -1,0 +1,12 @@
+<button class="btn" [class.adaptive]="adaptive" [disabled]="disabled" [attr.title]="tooltip" [class.icon-only]="iconOnly"
+  [class.btn-medium]="size === 'medium'" [class.btn-big]="size === 'big'"
+  [class.btn-dark]="color === 'dark'" [class.btn-white]="color === 'white'"
+>
+  @if (iconName && iconPosition === 'left') {
+    <app-icon class="btn-icon" [name]="iconName" [color]="iconColor"></app-icon>
+  }
+  <span class="btn-text"><ng-content /></span>
+  @if (iconName && iconPosition === 'right') {
+    <app-icon class="btn-icon" [name]="iconName" [color]="iconColor"></app-icon>
+  }
+</button>

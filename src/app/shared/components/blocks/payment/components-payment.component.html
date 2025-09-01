@@ -1,0 +1,19 @@
+<div class="payment" appResponsive #r="appResponsive">
+  <div class="payment-amounts">
+    @for (amount of presetAmounts; track amount) {
+      <app-button-secondary [active]="selectedAmount === amount" (click)="onPresetClick(amount)">
+        {{ amount | currency: 'RUB' : 'symbol-narrow':'1.0-0' }}
+      </app-button-secondary>
+    }
+  </div>
+  <div class="payment-pay">
+    <span>Другая сумма</span>
+    <app-currency [value]="customAmount" (valueChange)="onCustomAmountChange($event)"></app-currency>
+  </div>
+  <div class="payment-confirm">
+    <app-button-secondary [iconName]="r.isMobile() ? 'youmoney' : ''" iconPosition="right" iconColor="#8B3FFD" size="big" (click)="proceed()">Далее</app-button-secondary>
+    @if (!r.isMobile()) {
+      <img src="assets/icons/youmoney-text.svg" alt="ЮMoney" />
+    }
+  </div>
+</div>

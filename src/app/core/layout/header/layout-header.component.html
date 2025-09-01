@@ -1,0 +1,10 @@
+<header class="header">
+  <a routerLink="/">
+    <app-layout-logo color="#333037"></app-layout-logo>
+  </a>
+  <app-navigation [items]="navigationItems"></app-navigation>
+  <a target="_blank" rel="noopener noreferrer" href="https://t.me/ihsan_sbor">
+    <app-button-primary class="header-button-link" iconName="tg" >Telegram-канал</app-button-primary>
+  </a>
+  <app-burger-menu [items]="navigationItems" class="header-burger-menu"></app-burger-menu>
+</header>

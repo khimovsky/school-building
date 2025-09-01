@@ -1,0 +1,17 @@
+<div class="payment" appResponsive #r="appResponsive">
+  <div class="payment-header">
+    <app-layout-logo size="big" class="payment-header-logo"></app-layout-logo>
+    <div class="payment-header-way">
+      <app-toggle [options]="toggleOptions" defaultValue="once" (change)="onToggleChange($event)"></app-toggle>
+    </div>
+    <app-button-secondary class="payment-header-share" iconName="forward" [size]="!r.isMobile() ? 'small' : 'big'" [iconOnly]="r.isMobile()" (click)="toShare()">Поделиться</app-button-secondary>
+  </div>
+  <div class="payment-content">
+    <app-components-payment></app-components-payment>
+  </div>
+  <div class="payment-footer">
+    <p>
+      © 2025 ИНН: 7328014102 МЕСТНАЯ МУСУЛЬМАНСКАЯ РЕЛИГИОЗНАЯ ОРГАНИЗАЦИЯ МЕЧЕТЬ №469 ЗАВОЛЖСКОГО РАЙОНА Г. УЛЬЯНОВСКА ЦЕНТРАЛИЗОВАННОЙ РЕЛИГИОЗНОЙ ОРГАНИЗАЦИИ "ЦЕНТРАЛЬНОЕ ДУХОВНОЕ УПРАВЛЕНИЕ МУСУЛЬМАН УЛЬЯНОВСКОЙ ОБЛАСТИ"
+    </p>
+  </div>
+</div>

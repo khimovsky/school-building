@@ -1,0 +1,117 @@
+.btn-burger {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  background: none;
+  cursor: pointer;
+  transition: all 180ms ease-out;
+  transform-origin: center;
+
+  &:active {
+    transform: scale(1.1);
+  }
+
+  &-icon {
+    width: 24px;
+    height: 24px;
+  }
+}
+
+.burger-menu {
+  width: 100%;
+  min-height: 100%;
+  min-width: 375px;
+  padding: 20px 16px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 1rem;
+
+  &-header {
+    display: flex;
+    align-items: center;
+    height: 44px;
+    gap: 1rem;
+
+    &-spacer {
+      flex: 1;
+    }
+
+    &-title {
+      flex: none;
+      font-size: 20px;
+      font-weight: 600;
+      line-height: 26px;
+      letter-spacing: 0;
+      color: #ffffff;
+      text-align: center;
+    }
+
+    app-button-secondary {
+      flex: 1;
+      display: flex;
+      justify-content: flex-end;
+    }
+  }
+
+  &-content {
+    width: max-content;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+
+    &-block {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+
+      &-header {
+        width: max-content;
+        display: flex;
+        gap: 8px;
+
+        &-title {
+          font-size: 14px;
+          font-weight: 500;
+          line-height: 20px;
+          letter-spacing: 0;
+          color: #FFFFFF;
+        }
+
+        &-icon {
+          width: 20px;
+          height: 20px;
+          color: white;
+        }
+      }
+
+      &-nav {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+
+        a {
+          width: max-content;
+          display: flex;
+          align-items: center;
+          height: 54px;
+          padding-left: 12px;
+          font-size: 24px;
+          font-weight: 500;
+          line-height: 30px;
+          letter-spacing: 0;
+          color: #FFFFFF99;
+          cursor: pointer;
+          transition: all 180ms ease-out;
+          transform-origin: center;
+
+          &:hover {
+            color: #ffffffd9;
+          }
+        }
+      }
+    }
+  }
+}

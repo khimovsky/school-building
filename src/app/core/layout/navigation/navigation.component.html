@@ -1,0 +1,27 @@
+<nav class="navigation" (click)="$event.stopPropagation()">
+  @for (item of items; track item.link) {
+    @if (!item.target) {
+      <a class="navigation-item" [class.disabled]="item.disabled"
+        [routerLink]="item.link" routerLinkActive="active"
+      >
+        <ng-container [ngTemplateOutlet]="link"></ng-container>
+      </a>
+    } @else {
+      <a class="navigation-item" [class.disabled]="item.disabled"
+        [href]="item.link" rel="noopener noreferrer" target="_blank"
+      >
+        <ng-container [ngTemplateOutlet]="link"></ng-container>
+      </a>
+    }
+
+    <ng-template #link>
+      @if (item.positionIcon === 'left' && item.nameIcon) {
+        <app-icon [name]="item.nameIcon"></app-icon>
+      }
+      <span class="navigation-item-text">{{ item.label }}</span>
+      @if (item.positionIcon === 'right' && item.nameIcon) {
+        <app-icon [name]="item.nameIcon"></app-icon>
+      }
+    </ng-template>
+  }
+</nav>

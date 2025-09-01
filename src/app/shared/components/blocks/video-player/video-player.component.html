@@ -1,0 +1,12 @@
+<div class="video-container" #playerWrapper>
+  @if (isPlayerVisible()) {
+    @if (!isPlaying()) {
+      <img [src]="poster" alt="Видеопостер" class="video-container-poster" />
+      <app-button-secondary class="video-container-button" size="big" iconName="play" (click)="playVideo()">
+        Начать просмотр
+      </app-button-secondary>
+    } @else {
+      <video [src]="src" controls autoplay class="video-container-element"></video>
+    }
+  }
+</div>

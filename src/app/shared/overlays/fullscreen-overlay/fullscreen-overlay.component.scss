@@ -1,0 +1,11 @@
+@use 'variables' as *;
+
+.fullscreen-overlay {
+  position: fixed;
+  overflow: auto;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: #333037CC;
+  backdrop-filter: blur($blur-glass);
+  -webkit-backdrop-filter: blur($blur-glass);
+  z-index: 1000;
+}

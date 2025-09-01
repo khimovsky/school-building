@@ -1,0 +1,14 @@
+<div class="error selectable" [class.shake]="shake()">
+  <div class="error-block {{ position }}">
+    @if (!hasContent) {
+      <h3>{{ title }}</h3>
+      <span>{{ message }}</span>
+    }
+    <div #content>
+      <ng-content></ng-content>
+    </div>
+  </div>
+  @if (showRetryButton) {
+    <app-button-primary (click)="runRetry()">Повторить</app-button-primary>
+  }
+</div>

@@ -1,0 +1,121 @@
+@use 'variables' as *;
+@use 'shared' as *;
+
+.policy {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  padding: 24px 20px;
+
+  @media (max-width: $container-max-width) {
+    padding: 20px 16px;
+  }
+
+  &-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    &-icon {
+      width: 48px;
+      height: 48px;
+
+      @media (max-width: $container-max-width) {
+        display: none;
+      }
+    }
+
+    &-title {
+      width: 100%;
+      max-width: max-content;
+      font-weight: 500;
+      font-size: 48px;
+      text-transform: lowercase;
+      line-height: 54px;
+      letter-spacing: 0;
+      color: #33303799;
+
+      @media (max-width: $container-max-width) {
+        font-size: 20px;
+        line-height: 26px;
+        text-transform: none;
+      }
+    }
+  }
+
+  &-content {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding: 0 76px;
+
+    @media (max-width: $container-max-width) {
+      padding: 0;
+    }
+
+    &-title {
+      width: 100%;
+      max-width: max-content;
+      font-weight: 500;
+      font-size: 24px;
+      line-height: 30px;
+      letter-spacing: 0;
+      color: #333037;
+
+      @media (max-width: $container-max-width) {
+        font-size: 16px;
+        line-height: 22px;
+      }
+    }
+
+    &-section {
+      display: flex;
+      flex-direction: column;
+      gap: 40px;
+
+      &-info {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+
+        &-title {
+          width: 100%;
+          max-width: max-content;
+          font-weight: 500;
+          font-size: 20px;
+          line-height: 26px;
+          letter-spacing: 0;
+          color: #333037;
+
+          @media (max-width: $container-max-width) {
+            font-size: 16px;
+            line-height: 22px;
+          }
+        }
+
+        &-text {
+          width: 100%;
+          max-width: max-content;
+          display: flex;
+          flex-direction: column;
+          gap: 20px;
+          font-weight: 400;
+          font-size: 16px;
+          line-height: 22px;
+          letter-spacing: 0;
+          color: #33303799;
+
+          @media (max-width: $container-max-width) {
+            font-size: 14px;
+            line-height: 20px;
+          }
+
+          ul {
+            list-style: disc;
+            margin-left: 30px;
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,12 @@
+.block {
+  background: #FFFFFF;
+  border-radius: 30px;
+}
+
+.selectable {
+  user-select: text !important;
+
+  * {
+    user-select: text !important;
+  }
+}

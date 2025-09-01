@@ -1,0 +1,5 @@
+<div class="container" appResponsive #r="appResponsive" [class.container-small]="r.isMobile()" [class.container-big]="!r.isMobile()"
+   [style.background-color]="color" [attr.title]="tooltip"
+>
+  <app-icon class="logo" name="heart" color="white"></app-icon>
+</div>

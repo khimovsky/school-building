@@ -1,0 +1,100 @@
+<div class="container">
+  <div class="block glow-1">
+    <app-gallery class="block-gallery" sizePreview="small" [images]="imagesPlan"></app-gallery>
+    <div class="block-main">
+      <div class="block-main-header">
+        <span class="block-main-header-title">Сбор на строительство Учебного корпуса при Мечети «Ихсан»</span>
+        <span class="block-main-header-description">Ваш взнос поможет создать условия для воспитания образованного и нравственного поколения мусульман</span>
+      </div>
+      <div class="block-main-actions">
+        <app-pay></app-pay>
+        <app-button-primary size="big" color="white" iconName="forward" (click)="toShare()">Поделиться</app-button-primary>
+      </div>
+    </div>
+  </div>
+  <div class="block glow-2" [class.glow-2]="loadingStatus === 'loaded'">
+    <div class="block-fund">
+      <div class="block-header">
+        <div class="block-header-info">
+          <app-icon class="block-header-info-icon" name="chart-square" color="#333037"></app-icon>
+          <span>отчет по сбору</span>
+        </div>
+        <div class="block-header-info">
+          <app-icon class="block-header-info-icon" name="calendar" color="#333037"></app-icon>
+          <span>до декабря 2025 года</span>
+        </div>
+      </div>
+      @switch (loadingStatus) {
+        @case ('loading') {
+          <app-loading [active]="loadingStatus === 'loading'" [size]="100"></app-loading>
+        }
+        @case ('loaded') {
+          @if (report$ | async; as report) {
+            <div class="block-fund-total">
+              <div class="block-fund-total-info">
+                <div class="block-fund-total-info-container">
+                  <span class="block-fund-total-info-container-title">Мы собрали:</span>
+                  <span class="block-fund-total-info-container-currency highlight">{{ report.totalSum | currency: 'RUB' : 'symbol-narrow':'1.0-0' }}</span>
+                </div>
+                <div class="block-fund-total-info-container">
+                  <span class="block-fund-total-info-container-title">За сегодня:</span>
+                  <span class="block-fund-total-info-container-currency">{{ report.dailySum | currency: 'RUB' : 'symbol-narrow':'1.0-0' }}</span>
+                </div>
+                <div class="block-fund-total-info-container">
+                  <span class="block-fund-total-info-container-title">Цель:</span>
+                  <span class=" block-fund-total-info-container-currency">{{ 160000000 | currency: 'RUB' : 'symbol-narrow':'1.0-0' }}</span>
+                </div>
+              </div>
+              <div class="block-fund-total-modal">
+                <i class="block-fund-total-modal-icon"></i>
+              </div>
+            </div>
+          }
+        }
+        @case ('error') {
+          <app-error [showRetryButton]="true" (retry)="toReport()"></app-error>
+        }
+      }
+    </div>
+  </div>
+  <div class="block">
+    <div class="block-player">
+      <div class="block-header">
+        <div class="block-header-info">
+          <app-icon class="block-header-info-icon" name="round-video" color="#333037"></app-icon>
+          <span>видео обзор проекта</span>
+        </div>
+      </div>
+      <div class="block-player-video">
+        <app-video-player src="assets/videos/building-video.mp4" poster="assets/images/building-poster.png"></app-video-player>
+      </div>
+    </div>
+  </div>
+  <div class="block">
+    <div class="block-building">
+      <div class="block-header">
+        <div class="block-header-info">
+          <app-icon class="block-header-info-icon" name="images" color="#333037"></app-icon>
+          <span>этапы строительства</span>
+        </div>
+      </div>
+      <div class="block-building-gallery">
+        <app-gallery sizePreview="big" [images]="imagesStage"></app-gallery>
+      </div>
+    </div>
+  </div>
+  <div class="block">
+    <div class="block-hadith">
+      <div class="block-header">
+        <div class="block-header-info">
+          <app-icon class="block-header-info-icon" name="round-video" color="#333037"></app-icon>
+          <span class="selectable">муслим 2674</span>
+        </div>
+      </div>
+      <span class="block-hadith-text selectable">
+        «Призывавший к правильному пути получит такую же награду, как и награды тех, кто последовал за ним, что не уменьшит их собственных наград ни на йоту, а на том, кто призывал (других) к заблуждению, будет (бремя) греха, равное (по тяжести бремени) грехов тех, кто последовал за ним, что никак не облегчит (тяжести) их собственных грехов»
+      </span>
+      <app-icon class="block-hadith-icon" name="quote" color="#33303799"></app-icon>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,43 @@
+@if (sizePreview === 'small') {
+  <div class="container-small" (click)="galleryOpen()">
+    <div class="container-small-info">
+      <span class="container-small-info-title">Галерея проекта</span>
+      <app-icon class="container-small-info-icon" name="arrow-right"></app-icon>
+    </div>
+    <i class="container-small-icon"></i>
+    <div class="container-small-view">
+      <span class="container-small-view-link">Можно посмотреть</span>
+      <app-icon class="container-small-view-icon" name="arrow-right"></app-icon>
+    </div>
+  </div>
+} @else {
+  <div class="container-big">
+    <app-button-secondary class="container-big-button" size="big" iconName="pip" (click)="galleryOpen()">
+      Посмотреть
+    </app-button-secondary>
+  </div>
+}
+
+<ng-template #galleryTmp>
+    <div class="gallery">
+      <div class="gallery-header">
+        <app-button-secondary iconName="cross" size="big" [iconOnly]="true" (click)="galleryClose()"/>
+      </div>
+      <div class="gallery-content">
+        <app-button-secondary iconName="arrow-left" size="big" class="gallery-content-button" [iconOnly]="true" (click)="prev()"/>
+        <div class="gallery-content-block">
+          <img [src]="images[currentIndex]" alt="Изображение" class="gallery-content-block-image" />
+          <div class="gallery-content-block-buttons">
+            <app-button-secondary iconName="arrow-left" size="big" [iconOnly]="true" (click)="prev()"/>
+            <app-button-secondary iconName="arrow-right" size="big" [iconOnly]="true" (click)="next()"/>
+          </div>
+        </div>
+        <app-button-secondary iconName="arrow-right" size="big" class="gallery-content-button" [iconOnly]="true" (click)="next()"/>
+      </div>
+      <div class="gallery-footer">
+        @for (img of images; track img; let i = $index) {
+          <img [src]="img" [class.selected]="i === currentIndex" (click)="select(i)" alt="Изображение" class="gallery-footer-image"/>
+        }
+      </div>
+    </div>
+</ng-template>

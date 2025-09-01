@@ -1,0 +1,51 @@
+@use 'variables' as *;
+
+.payment {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 80px;
+  background: transparent;
+  color: #FFFFFF;
+
+  &-amounts {
+    width: 420px;
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+
+    @media (max-width: $container-max-width) {
+      width: 343px;
+    }
+  }
+
+  &-pay {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+
+    span {
+      align-self: center;
+      font-size: 16px;
+      line-height: 20px;
+      letter-spacing: 0;
+      text-align: center;
+    }
+  }
+
+  &-confirm {
+    width: 420px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+
+    @media (max-width: $container-max-width) {
+      width: 343px;
+    }
+
+    img {
+      align-self: center;
+      height: 24px;
+    }
+  }
+}

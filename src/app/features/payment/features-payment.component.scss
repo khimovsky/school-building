@@ -1,0 +1,52 @@
+@use 'variables' as *;
+
+.payment {
+  width: 100%;
+  min-height: 100vh;
+  padding: 32px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 1rem;
+
+  @media (max-width: $container-max-width) {
+    padding: 20px 16px;
+  }
+
+  &-header {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 6px;
+
+    &-way {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+  }
+
+  &-content {
+    display: flex;
+    justify-content: center;
+  }
+
+  &-footer {
+    align-self: center;
+    max-width: 720px;
+
+    p {
+      font-weight: 500;
+      font-size: 12px;
+      line-height: 18px;
+      letter-spacing: 0;
+      text-align: center;
+      color: #FFFFFF33;
+
+      @media (max-width: $container-max-width) {
+        color: #FFFFFF99
+      }
+    }
+  }
+}

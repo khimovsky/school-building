@@ -1,0 +1,48 @@
+<button class="btn-burger" (click)="menuOpen()">
+  <app-icon class="btn-burger-icon" name="burger-menu" color="#333"></app-icon>
+</button>
+
+<ng-template #menuTpl>
+  <div class="burger-menu">
+    <div class="burger-menu-header">
+      <div class="burger-menu-header-spacer"></div>
+      <span class="burger-menu-header-title">Меню</span>
+      <app-button-secondary iconName="cross" size="big" [iconOnly]="true" (click)="menuClose()"/>
+    </div>
+    <div class="burger-menu-content">
+      <div class="burger-menu-content-block">
+        <div class="burger-menu-content-block-header">
+          <span class="burger-menu-content-block-header-title">Важные файлы</span>
+          <div class="burger-menu-content-block-header-icon">
+            <app-icon name="file-pdf"></app-icon>
+          </div>
+        </div>
+        <nav class="burger-menu-content-block-nav" (click)="$event.stopPropagation()">
+          @for (item of items; track item.link) {
+            @if (!item.target) {
+              <a [class.disabled]="item.disabled" (click)="menuClose()" [routerLink]="item.link">
+                <span class="navigation-item-text">{{ item.label }}</span>
+              </a>
+            } @else {
+              <a [class.disabled]="item.disabled" (click)="menuClose()" [href]="item.link" rel="noopener noreferrer" target="_blank">
+                <span class="navigation-item-text">{{ item.label }}</span>
+              </a>
+            }
+          }
+        </nav>
+      </div>
+      <div class="burger-menu-content-block">
+        <div class="burger-menu-content-block-header">
+          <span class="burger-menu-content-block-header-title">Важные ссылки</span>
+          <div class="burger-menu-content-block-header-icon">
+            <app-icon name="link"></app-icon>
+          </div>
+        </div>
+        <nav class="burger-menu-content-block-nav" (click)="$event.stopPropagation()">
+          <a href="https://cdumuo.ru" rel="noopener noreferrer" target="_blank" (click)="menuClose()">Основной сайт</a>
+          <a href="https://t.me/ihsan_sbor" rel="noopener noreferrer" target="_blank" (click)="menuClose()">Telegram-канал</a>
+        </nav>
+      </div>
+    </div>
+  </div>
+</ng-template>

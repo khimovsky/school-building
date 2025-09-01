@@ -1,0 +1,3 @@
+<input type="tel" pattern="[0-9]*" maxlength="19" [placeholder]="placeholder | currency: 'RUB' : 'symbol-narrow':'1.0-0'"
+  [value]="formatValue(value)" (input)="onInput($event)"
+/>
