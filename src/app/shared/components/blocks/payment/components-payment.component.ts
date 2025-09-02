@@ -27,6 +27,7 @@ export class ComponentsPaymentComponent {
   protected onPresetClick(amount: number): void {
     this.selectedAmount = amount;
     this.customAmount = null;
+    this.proceed();
   }
 
   protected onCustomAmountChange(value: number | null): void {
