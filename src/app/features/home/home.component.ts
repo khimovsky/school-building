@@ -31,12 +31,12 @@ export class HomeComponent implements OnInit {
   protected loadingStatus: LoadingStatus = LoadingStatus.loading;
 
   protected readonly imagesPlan: string[] = Array.from(
-    { length: 25 },
+    { length: 12 },
     (_, i: number): string => `/assets/images/plan/building-${i + 1}.jpg`
   );
 
   protected readonly imagesStage: string[] = Array.from(
-    { length: 8 },
+    { length: 15 },
     (_, i: number): string => `/assets/images/stage/building-${i + 1}.jpg`
   );
 
