@@ -14,8 +14,8 @@ import {NavigationComponent, NavigationItem} from "../navigation/navigation.comp
 })
 export class LayoutHeaderComponent {
   protected readonly navigationItems: NavigationItem[] | BurgerMenuItem[] = [
-    { label: 'Ознакомиться с проектом', link: '/doc.pdf', target: true, nameIcon: 'file-pdf', positionIcon: 'right' },
-    { label: 'План проекта', link: '/plans.pdf', target: true, nameIcon: 'file-pdf', positionIcon: 'right' },
-    { label: 'Банковские реквизиты', link: '/rekvizit.pdf', target: true, nameIcon: 'file-pdf', positionIcon: 'right' }
+    { label: 'Ознакомиться с проектом', link: 'https://www.mosques.ru/doc.pdf', target: true, nameIcon: 'file-pdf', positionIcon: 'right' },
+    { label: 'План проекта', link: 'https://www.mosques.ru/plans.pdf', target: true, nameIcon: 'file-pdf', positionIcon: 'right' },
+    { label: 'Банковские реквизиты', link: 'https://www.mosques.ru/rekvizit.pdf', target: true, nameIcon: 'file-pdf', positionIcon: 'right' }
   ];
 }
