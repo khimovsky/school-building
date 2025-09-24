@@ -36,7 +36,7 @@
       </div>
       <div class="gallery-footer">
         @for (img of images; track img; let i = $index) {
-          <img [src]="img" [class.selected]="i === currentIndex" (click)="select(i)" alt="Изображение" class="gallery-footer-image"/>
+          <img [src]="img" [class.selected]="i === currentIndex" (click)="select(i)" loading="lazy" alt="Изображение" class="gallery-footer-image"/>
         }
       </div>
     </div>
