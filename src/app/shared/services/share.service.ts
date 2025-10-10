@@ -1,31 +1,40 @@
 import {inject, Injectable} from '@angular/core';
 import {catchError, exhaustMap, from, Observable, of, Subject, tap} from "rxjs";
 import {ToastService} from "../components/blocks/toast/toast.service";
+import {Location} from "@angular/common";
 
 @Injectable({
   providedIn: 'root'
 })
 export class ShareService {
+  private readonly location = inject(Location);
   private readonly toastService = inject(ToastService);
 
-  private shareClick$ = new Subject<void>();
+  private readonly shareClick$ = new Subject<string>();
 
   constructor() {
     this.shareClick$
-      .pipe(exhaustMap((): Observable<void | null> => this.handleShare()))
+      .pipe(exhaustMap((url: string): Observable<void | null> => this.handleShare(url)))
       .subscribe();
   }
 
-  public shareSite(): void {
-    this.shareClick$.next();
+  public shareSite(path?: string): void {
+    const baseUrl: string = window.location.origin;
+    const routePath: string = path ?? this.location.path();
+    this.shareClick$.next(`${baseUrl}${routePath ? '/' + routePath.replace(/^\/+/, '') : ''}`);
   }
 
-  private handleShare(): Observable<void | null> {
+  private handleShare(url: string): Observable<void | null> {
     const shareData = {
       title: 'Учебный корпус при Мечети «Ихсан»',
       text: 'Поддержите проект строительства Учебного корпуса при Мечети «Ихсан»!',
-      url: String(window.location.href)
+      url
     };
+
+    if (!navigator.clipboard && !navigator.share) {
+      this.toastService.show('Ваш браузер не поддерживает функцию “Поделиться”');
+      return of(null);
+    }
 
     const copy$: Observable<void | null> = navigator.clipboard?.writeText
       ? from(navigator.clipboard.writeText(String(shareData.url))).pipe(

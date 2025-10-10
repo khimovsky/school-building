@@ -24,7 +24,7 @@ export class FeaturesPaymentComponent {
   ] satisfies ToggleOption<PayType>[];
 
   protected toShare(): void {
-    this.shareService.shareSite();
+    this.shareService.shareSite('payment');
   }
 
   protected onToggleChange(value: unknown): void {
