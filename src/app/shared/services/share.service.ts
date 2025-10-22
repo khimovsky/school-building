@@ -36,8 +36,10 @@ export class ShareService {
       return of(null);
     }
 
+    const copyText: string = `${shareData.title}\n${shareData.text}\n${shareData.url}`;
+
     const copy$: Observable<void | null> = navigator.clipboard?.writeText
-      ? from(navigator.clipboard.writeText(String(shareData.url))).pipe(
+      ? from(navigator.clipboard.writeText(copyText)).pipe(
         tap((): void => this.toastService.show('Ссылка скопирована')),
         catchError((): Observable<null> => {
           this.toastService.show('Не удалось скопировать ссылку');
@@ -48,9 +50,14 @@ export class ShareService {
 
     const share$: Observable<void | null> = navigator.share
       ? from(navigator.share(shareData)).pipe(
-        catchError((): Observable<null> => {
+        catchError((): Observable<void | null> => {
           this.toastService.show('Ссылка уже скопирована');
-          return of(null);
+          return from(navigator.clipboard.writeText(copyText)).pipe(
+            catchError(() => {
+              this.toastService.show('Не удалось скопировать ссылку');
+              return of(null);
+            })
+          );
         })
       )
       : of(null);
