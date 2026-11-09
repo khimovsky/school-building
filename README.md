@@ -24,7 +24,6 @@ npm start        # http://localhost:4200
 | `npm start`     | dev-сервер                            |
 | `npm run build` | сборка                                |
 | `npm run watch` | сборка в watch-режиме (development)   |
-| `npm test`      | unit-тесты (Karma)                    |
 
 ## Цель кейса
 
