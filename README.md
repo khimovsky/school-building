@@ -1,15 +1,32 @@
-# SchoolBuilding
+# School Building
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.3.17.
+> ⚠️ **Тестовый кейс.** Учебный проект для практики верстки и работы с Angular. Не является production-продуктом.
 
-## Development server
+Лендинг для благотворительного фонда, который собирает средства на строительство школы. Основной акцент на верстке: адаптивность, структура секций, стилизация.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+## Стек
 
-## Build
+- Angular 17
+- TypeScript 5.4
+- RxJS 7.8
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+## Запуск
 
-## Further help
+```bash
+npm install
+npm start        # http://localhost:4200
+```
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+## Скрипты
+
+| Команда         | Назначение                            |
+| --------------- | ------------------------------------- |
+| `npm start`     | dev-сервер                            |
+| `npm run build` | сборка                                |
+| `npm run watch` | сборка в watch-режиме (development)   |
+| `npm test`      | unit-тесты (Karma)                    |
+
+## Цель кейса
+
+- Отработка верстки лендинга по макету.
+- Адаптивная разметка, секционная структура страницы.
